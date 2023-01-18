@@ -11,19 +11,30 @@ const Card = (props) => {
   : (props.food.giftMouse > 1 && props.food.giftMouse < 5)
     ? `${props.food.giftMouse} мыши в подарок`
     : `${props.food.giftMouse} мышей в подарок`;
+  const cardDescriptionItemAdditionClass = `card__description-item ${props.food.addition ? '' : 'card__description-item_hidden'}`
 
   return (
-    <li className='card'>
+    <li className='card-item'>
+      <div className='card'>
       <p className='card__type'>{props.food.type}</p>
       <h2 className='card__name'>{props.food.name}</h2>
       <p className='card__testy'>{props.food.testy}</p>
       <ul className='card__description'>
-        <li>{packageQuantity}</li>
-        <li>{giftMouse}</li>
-        <li>{props.food.addition && props.food.addition}</li>
+        <li className='card__description-item'>
+          {packageQuantity}
+        </li>
+        <li className='card__description-item'>
+          {giftMouse}
+        </li>
+        <li className={cardDescriptionItemAdditionClass}>
+          {props.food.addition}
+        </li>
       </ul>
       <img className='card__img' src={props.food.img} alt={`${props.food.name} ${props.food.testy}`} />
-      <p className='card__weight'>{`${props.food.weight} кг`}</p>
+      <p className='card__weight'>
+        {props.food.weight} <span className='card__weight-unit'>кг</span>
+      </p>
+      </div>
     </li>
   );
 }

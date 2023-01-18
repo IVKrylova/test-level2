@@ -9,7 +9,7 @@ export const catFood = [
     packageQuantity: '10',
     giftMouse: '1',
     addition: '',
-    weight: '0.5',
+    weight: '0,5',
     description: 'Печень утки разварная с артишоками',
     stockQuantity: 10,
     img: catPhoto,
