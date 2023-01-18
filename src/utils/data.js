@@ -1,0 +1,32 @@
+export const catFood = [
+  {
+    id: 0,
+    name: 'Нямушка',
+    taste: 'с фуа-гра',
+    quantity: '10',
+    giftMouse: '1',
+    addition: '',
+    weight: '0.5',
+    description: 'Печень утки разварная с артишоками',
+  },
+  {
+    id: 1,
+    name: 'Нямушка',
+    taste: 'с рыбой',
+    quantity: '40',
+    giftMouse: '2',
+    addition: '',
+    weight: '2',
+    description: 'Головы щучьи с чесноком да свежайшая сёмгушка',
+  },
+  {
+    id: 2,
+    name: 'Нямушка',
+    taste: 'с курой',
+    quantity: '100',
+    giftMouse: '5',
+    addition: 'заказчик доволен',
+    weight: '5',
+    description: 'Филе из цыплят с трюфелями в бульоне',
+  },
+];
