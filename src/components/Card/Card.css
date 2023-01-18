@@ -10,6 +10,11 @@
   display: grid;
   grid-template-columns: 1fr;
   position: relative;
+  cursor: pointer;
+}
+
+.card_selected {
+  background-image: url(../../images/selected-border.svg);
 }
 
 .card__type {
@@ -97,12 +102,17 @@
   word-spacing: 30px;
 }
 
+.card__weight_selected {
+  background-color: #D91667;
+}
+
 .card__weight-unit {
   font-size: 21px;
   line-height: 1.05;
 }
 
 .byline {
+  max-width: 320px;
   font-weight: 400;
   font-size: 13px;
   line-height: 15px;
@@ -150,6 +160,10 @@
   .card__img {
     width: 250px;
     margin: 46px 3px 4px
+  }
+
+  .byline {
+    max-width: 250px;
   }
 }
 
