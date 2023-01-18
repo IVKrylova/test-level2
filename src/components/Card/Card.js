@@ -4,6 +4,7 @@ import './Card.css';
 const Card = (props) => {
   const [isCardSelected, setIsCardSelected] = useState(false);
   const [isCardDisabled, setIsCardDisablet] = useState(false);
+  const [isCardHover, setIsCardHover] = useState(false);
 
   const packageQuantity = props.food.packageQuantity === 1
     ? '1 порция'
@@ -11,10 +12,10 @@ const Card = (props) => {
       ? `${props.food.packageQuantity} порции`
       : `${props.food.packageQuantity} порций`;
   const giftMouse = props.food.giftMouse === 1
-  ? 'мышь в подарок'
-  : (props.food.giftMouse > 1 && props.food.giftMouse < 5)
-    ? `${props.food.giftMouse} мыши в подарок`
-    : `${props.food.giftMouse} мышей в подарок`;
+    ? 'мышь в подарок'
+    : (props.food.giftMouse > 1 && props.food.giftMouse < 5)
+      ? `${props.food.giftMouse} мыши в подарок`
+      : `${props.food.giftMouse} мышей в подарок`;
   const cardDescriptionItemAdditionClass = `card__description-item ${props.food.addition ? '' : 'card__description-item_hidden'}`;
   const cardClass = `card ${isCardDisabled ? 'card_disabled' : isCardSelected ? 'card_selected' : ''}`;
   const cardWeightClass = `card__weight ${isCardDisabled ? 'card__weight_disabled' : isCardSelected ? 'card__weight_selected' : ''}`;
@@ -25,20 +26,44 @@ const Card = (props) => {
 
   const hendleClickBuy = () => {
     setIsCardSelected(true);
+    setIsCardHover(false)
   }
 
   const handleCardClick = () => {
     if (!isCardDisabled) {
+      setIsCardHover(false);
       isCardSelected ? setIsCardSelected(false) : setIsCardSelected(true);
     }
   }
 
+  const hadleCardMouseOut = () => {
+    isCardSelected && setIsCardHover(true);
+  }
+
+  const hadleCardMouseOver = () => {
+    isCardSelected && setIsCardHover(false);
+  }
+
   return (
     <li className='card-item'>
-      <div className={cardClass} onClick={handleCardClick}>
-        <p className={`card__type ${isCardDisabled ? 'card__type_disabled' : ''}`}>{props.food.type}</p>
-        <h2 className={`card__name ${isCardDisabled ? 'card__name_disabled' : ''}`}>{props.food.name}</h2>
-        <p className={`card__taste ${isCardDisabled ? 'card__taste_disabled' : ''}`}>{props.food.taste}</p>
+      <div
+        className={cardClass}
+        onClick={handleCardClick}
+        onMouseOut={hadleCardMouseOut}
+        onMouseOver={hadleCardMouseOver}
+      >
+        {isCardHover
+          ? <p className='card__hover-subtitle'>Котэ не одобряет?</p>
+          : <p className={`card__type ${isCardDisabled ? 'card__type_disabled' : ''}`}>
+            {props.food.type}
+          </p>
+        }
+        <h2 className={`card__name ${isCardDisabled ? 'card__name_disabled' : ''}`}>
+          {props.food.name}
+        </h2>
+        <p className={`card__taste ${isCardDisabled ? 'card__taste_disabled' : ''}`}>
+          {props.food.taste}
+        </p>
         <ul className={`card__description ${isCardDisabled ? 'card__description_disabled' : ''}`}>
           <li className='card__description-item'>
             {packageQuantity}

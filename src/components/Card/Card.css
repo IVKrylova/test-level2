@@ -51,6 +51,17 @@
   opacity: .5;
 }
 
+.card__hover-subtitle {
+  padding: 21px 51px 0 51px;
+  box-sizing: border-box;
+  margin: 0;
+  width: 100%;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #E62E7A;
+}
+
 .card__name {
   font-weight: 700;
   font-size: 48px;
