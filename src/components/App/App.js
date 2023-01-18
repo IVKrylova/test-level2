@@ -5,6 +5,7 @@ import './App.css';
 const App = () => {
   return (
     <div className='app'>
+      <section className='catalog'>
       <h1 className='main-title'>Ты сегодня покормил кота?</h1>
         <ul className='card-list'>
           {catFood.map(food => {
@@ -16,6 +17,7 @@ const App = () => {
             );
           })}
         </ul>
+      </section>
     </div>
   );
 }
