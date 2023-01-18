@@ -101,3 +101,23 @@
   font-size: 21px;
   line-height: 1.05;
 }
+
+.byline {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 15px;
+  text-align: center;
+  color: #FFF;
+  width: 100%;
+  padding: 0;
+  margin: 14px auto 0;
+}
+
+.byline__button {
+  border: none;
+  background-color: transparent;
+  color: rgba(22, 152, 217, 1);
+  padding: 0;
+  border-bottom: 1px dashed rgba(22, 152, 217, 1);
+  cursor: pointer;
+}
