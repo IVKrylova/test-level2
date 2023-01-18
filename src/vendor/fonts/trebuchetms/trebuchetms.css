@@ -1,0 +1,19 @@
+@font-face {
+  font-family: 'Trebuchet MS';
+  font-style:  normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("TrebuchetMS.ttf") format("ttf"),
+    url("TrebuchetMS.woff") format("woff"),
+    url("TrebuchetMS.eot") format("eot");
+}
+
+@font-face {
+  font-family: 'Trebuchet MS';
+  font-style:  normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("TrebuchetMS-Bold.ttf") format("ttf"),
+    url("TrebuchetMS-Bold.woff") format("woff"),
+    url("TrebuchetMS-Bold.eot") format("eot");
+}
