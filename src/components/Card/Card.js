@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './Card.css';
 
 const Card = (props) => {
   const [isCardSelected, setIsCardSelected] = useState(false);
+  const [isCardDisabled, setIsCardDisablet] = useState(false);
 
   const packageQuantity = props.food.packageQuantity === 1
     ? '1 порция'
@@ -15,24 +16,30 @@ const Card = (props) => {
     ? `${props.food.giftMouse} мыши в подарок`
     : `${props.food.giftMouse} мышей в подарок`;
   const cardDescriptionItemAdditionClass = `card__description-item ${props.food.addition ? '' : 'card__description-item_hidden'}`;
-  const cardClass = `card ${isCardSelected ? 'card_selected' : ''}`;
-  const cardWeightClass = `card__weight ${isCardSelected ? 'card__weight_selected' : ''}`;
+  const cardClass = `card ${isCardDisabled ? 'card_disabled' : isCardSelected ? 'card_selected' : ''}`;
+  const cardWeightClass = `card__weight ${isCardDisabled ? 'card__weight_disabled' : isCardSelected ? 'card__weight_selected' : ''}`;
+
+  useEffect(() => {
+    Number(props.food.stockQuantity) === 0 && setIsCardDisablet(true);
+  }, []);
 
   const hendleClickBuy = () => {
     setIsCardSelected(true);
   }
 
   const handleCardClick = () => {
-    isCardSelected ? setIsCardSelected(false) : setIsCardSelected(true);
+    if (!isCardDisabled) {
+      isCardSelected ? setIsCardSelected(false) : setIsCardSelected(true);
+    }
   }
 
   return (
     <li className='card-item'>
       <div className={cardClass} onClick={handleCardClick}>
-        <p className='card__type'>{props.food.type}</p>
-        <h2 className='card__name'>{props.food.name}</h2>
-        <p className='card__testy'>{props.food.testy}</p>
-        <ul className='card__description'>
+        <p className={`card__type ${isCardDisabled ? 'card__type_disabled' : ''}`}>{props.food.type}</p>
+        <h2 className={`card__name ${isCardDisabled ? 'card__name_disabled' : ''}`}>{props.food.name}</h2>
+        <p className={`card__taste ${isCardDisabled ? 'card__taste_disabled' : ''}`}>{props.food.taste}</p>
+        <ul className={`card__description ${isCardDisabled ? 'card__description_disabled' : ''}`}>
           <li className='card__description-item'>
             {packageQuantity}
           </li>
@@ -48,11 +55,15 @@ const Card = (props) => {
           {props.food.weight} <span className='card__weight-unit'>кг</span>
         </p>
       </div>
-      {isCardSelected
-        ? <p className='byline'>{`${props.food.description}.`}</p>
-        : <p className='byline'>
-          Чего сидишь? Порадуй котэ, <button className='byline__button' type='bytton' onClick={hendleClickBuy}>купи.</button>
+      {isCardDisabled
+        ? <p className='byline byline_disabled'>
+          {`Печалька, ${props.food.taste} закончился.`}
         </p>
+        : isCardSelected && !isCardDisabled
+          ? <p className='byline'>{`${props.food.description}.`}</p>
+          : <p className='byline'>
+            Чего сидишь? Порадуй котэ, <button className='byline__button' type='bytton' onClick={hendleClickBuy}>купи.</button>
+          </p>
       }
     </li>
   );

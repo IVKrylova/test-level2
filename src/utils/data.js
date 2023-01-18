@@ -37,7 +37,7 @@ export const catFood = [
     addition: 'заказчик доволен',
     weight: '5',
     description: 'Филе из цыплят с трюфелями в бульоне',
-    stockQuantity: 10,
+    stockQuantity: 0,
     img: catPhoto,
   },
 ];

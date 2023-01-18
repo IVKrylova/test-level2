@@ -17,6 +17,23 @@
   background-image: url(../../images/selected-border.svg);
 }
 
+.card_disabled {
+  cursor: default;
+  background-image: url(../../images/disabled-border.svg);
+}
+
+.card_disabled::after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: .5;
+  border-radius: 12px;
+  background: linear-gradient(-45deg, #B3B3B3 95%, transparent 0)
+}
+
 .card__type {
   padding: 21px 64px 0 51px;
   box-sizing: border-box;
@@ -27,6 +44,11 @@
   font-size: 16px;
   line-height: 19px;
   color: #666666;
+}
+
+.card__type_disabled {
+  color: #B3B3B3;
+  opacity: .5;
 }
 
 .card__name {
@@ -41,7 +63,12 @@
   box-sizing: border-box;
 }
 
-.card__testy {
+.card__name_disabled {
+  color: #B3B3B3;
+  opacity: .5;
+}
+
+.card__taste {
   font-weight: 700;
   font-size: 24px;
   line-height: 28px;
@@ -49,6 +76,16 @@
   padding-left: 51px;
   margin: 0;
   box-sizing: border-box;
+}
+
+.card__taste_disabled {
+  color: #B3B3B3;
+  opacity: .5;
+}
+
+.card__description_disabled {
+  color: #B3B3B3;
+  opacity: .5;
 }
 
 .card__description {
@@ -78,7 +115,7 @@
 .card__img {
   width: 312px;
   object-fit: contain;
-  margin: 48px 4px 4px;
+  margin: 20px 4px 4px;
   border-radius: 5px;
   display: block;
 }
@@ -106,6 +143,10 @@
   background-color: #D91667;
 }
 
+.card__weight_disabled {
+  background-color: #B3B3B3;
+}
+
 .card__weight-unit {
   font-size: 21px;
   line-height: 1.05;
@@ -121,6 +162,11 @@
   width: 100%;
   padding: 0;
   margin: 14px auto 0;
+  cursor: default;
+}
+
+.byline_disabled {
+  color: #FFFF66;
 }
 
 .byline__button {
@@ -159,7 +205,7 @@
 
   .card__img {
     width: 250px;
-    margin: 46px 3px 4px
+    margin-top: 18px;
   }
 
   .byline {
